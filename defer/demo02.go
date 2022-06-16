@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println(WithReturnValue())
 	//fmt.Println(WithNamedReturnValue())
+	//DeferExecute()
 }
 
 func WithReturnValue() int {
@@ -20,4 +21,17 @@ func WithNamedReturnValue() (a int) {
 		a++
 	}()
 	return a
+}
+
+func DeferExecute() int {
+	defer func() {
+		fmt.Println("Defer Function")
+	}()
+
+	return SimpleFunction()
+}
+
+func SimpleFunction() int {
+	fmt.Println("Simple Function")
+	return 0
 }
